@@ -16,10 +16,10 @@
             <ListView x:Name="lstContententList" HorizontalAlignment="Left" Height="100" Margin="62,130,0,0" VerticalAlignment="Top" Width="641" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutomationProperties.IsColumnHeader="True">
                 <ListView.View>
                     <GridView AllowsColumnReorder="True"> 
-                        <GridViewColumn Header="Nom" Width="120" Block.TextAlignment="Center"/>
-                        <GridViewColumn Header="Quantité" Width="120" Block.TextAlignment="Center"/>
-                        <GridViewColumn Header= "" Block.TextAlignment="Center" Width="120"/>
-                        <GridViewColumn Header= "" Block.TextAlignment="Center" Width="120"/>
+                        <GridViewColumn Header="Nom" Width="120" Block.TextAlignment="Center" DisplayMemberBinding="{Binding name}"/>
+                        <GridViewColumn Header="Quantité" Width="120" Block.TextAlignment="Center" DisplayMemberBinding="{Binding quantity}"/>
+                        <GridViewColumn Header= "" Block.TextAlignment="Center" Width="120" DisplayMemberBinding="{Binding edit}"/>
+                        <GridViewColumn Header= "" Block.TextAlignment="Center" Width="120" DisplayMemberBinding="{Binding remove}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

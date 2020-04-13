@@ -8,7 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -20,26 +19,27 @@ namespace food
     /// <summary>
     /// Logique d'interaction pour AddRecipePage.xaml
     /// </summary>
+    internal struct TempLine
+    {
+        internal TextBox name { get; set; }
+        internal TextBox quantity { get; set; }
+        internal Button edit { get; set; }
+        internal Button remove { get; set; }
+    };
+
     public partial class AddRecipePage 
     {
         public AddRecipePage()
         {
             InitializeComponent();
-            PopulateContentListViewHeaders();
         }
 
-        private void PopulateContentListViewHeaders()
-        {
-            string[] header = {"Nom","Quantité","Modifier","Supprimer"};
-            for (int i = 0; i < header.Length; ++i)
-            {
-            }
-            
-        }
+       
 
         private void btnAddContent_Click(object sender, RoutedEventArgs e)
         {
-            lstContententList.Items.Add("Patate");
+
+            lstContententList.Items.Add(new TempLine { name = new TextBox(), quantity = new TextBox() }) ;
             
         }
     }
