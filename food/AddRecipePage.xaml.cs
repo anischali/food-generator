@@ -33,9 +33,6 @@ namespace food
             string[] header = {"Nom","Quantité","Modifier","Supprimer"};
             for (int i = 0; i < header.Length; ++i)
             {
-                GridViewColumn gridViewColumn = new GridViewColumn();
-                gridViewColumn.Header = header[i];
-                lstContententList.BindingGroup.Items.Add(gridViewColumn);
             }
             
         }
