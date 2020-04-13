@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="food.GeneratorPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:food"
+             mc:Ignorable="d" Width="395.6" Height="388.8">
+    <Grid Margin="0,0,-0.8,0" Height="394" VerticalAlignment="Top">
+        <Label Content="Combien de repas voulez vous" HorizontalAlignment="Left" VerticalAlignment="Top" Width="180" Margin="13,10,0,0"/>
+        <TextBox x:Name="NumberOfMenus" HorizontalAlignment="Left" Height="23" Margin="198,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="37" RenderTransformOrigin="-0.574,-3.812" TextAlignment="Center"/>
+        <Rectangle x:Name="TagsRect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="312" Margin="13,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="222"/>
+        <Label Content="Tags" HorizontalAlignment="Left" Margin="13,38,0,0" VerticalAlignment="Top" Width="89"/>
+        <ComboBox x:Name="TagsList" HorizontalAlignment="Left" Margin="122,38,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="0.5,0.5" Height="22" IsReadOnly="True"/>
+        <Button Content="Génerer" HorizontalAlignment="Left" Margin="240,341,0,0" VerticalAlignment="Top" Width="123" Height="35" RenderTransformOrigin="0.389,0.573"/>
+    </Grid>
+</UserControl>
