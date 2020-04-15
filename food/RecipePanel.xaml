@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="food.RecipePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:food"
+             mc:Ignorable="d" d:DesignWidth="800" Height="733.442">
+    <Grid Margin="0,0,0,-0.4">
+        <Label Content="Nom de l'ingredient" HorizontalAlignment="Left" Margin="114,172,0,0" VerticalAlignment="Top" Height="29" Width="182"/>
+        <ComboBox HorizontalAlignment="Left" Margin="486,172,0,0" VerticalAlignment="Top" Width="228"/>
+        <Label Content="Quantité" HorizontalAlignment="Left" Margin="114,247,0,0" VerticalAlignment="Top" Height="29" Width="182"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="486,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228"/>
+        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="114,631,0,0" VerticalAlignment="Top" Width="182" Height="70"/>
+        <Button Content="Annuler" HorizontalAlignment="Left" Margin="532,631,0,0" VerticalAlignment="Top" Width="182" Height="70" Click="Button_Click"/>
+        <Grid HorizontalAlignment="Left" Height="278" Margin="114,309,0,0" VerticalAlignment="Top" Width="600">
+            <Label Content="Nom de l'ingredient" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top" Height="29" Width="182"/>
+            <Label Content="Type" HorizontalAlignment="Left" Margin="47,61,0,0" VerticalAlignment="Top" Height="29" Width="182"/>
+        </Grid>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="486,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228"/>
+        <ComboBox HorizontalAlignment="Left" Margin="486,372,0,0" VerticalAlignment="Top" Width="228"/>
+        <Button Content="Valider" HorizontalAlignment="Left" Margin="221,498,0,0" VerticalAlignment="Top" Width="105" Height="32"/>
+        <Button Content="Annuler" HorizontalAlignment="Left" Margin="510,498,0,0" VerticalAlignment="Top" Width="105" Height="32"/>
+        <Button Content="Nouvel ingrédient" HorizontalAlignment="Left" Margin="608,10,0,0" VerticalAlignment="Top" Width="182" Height="29"/>
+
+    </Grid>
+</UserControl>
