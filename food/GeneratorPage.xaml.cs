@@ -29,14 +29,14 @@ namespace food
         public void OnTagCheckedEvent(object sender, RoutedEventArgs args)
         {
             CheckBox senderBox = (CheckBox)sender;
-            Console.WriteLine($"Index: {senderBox.Tag} Text: {senderBox.Content} Checked");
+            Generator.TagsToUseInSearch.Remove((Tag)senderBox.Tag);
 
         }
 
         public void OnTagUncheckedEvent(object sender, RoutedEventArgs args)
         {
             CheckBox senderBox = (CheckBox)sender;
-            Console.WriteLine($"Index: {senderBox.Tag} Text: {senderBox.Content} Unchecked");
+            Generator.TagsToUseInSearch.Remove((Tag)senderBox.Tag);
         }
 
         public void PopulateTagsList()

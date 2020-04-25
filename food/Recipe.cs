@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace food
 {
@@ -12,9 +9,11 @@ namespace food
         internal List<Content> Contents { get; set; }
         internal string Description { get; set; }
         internal int PeopleNumber { get; set; }
+        internal string uid { get; private set; }
 
         internal Recipe()
         {
+            uid = Guid.NewGuid().ToString();
             Tags = new List<Tag>();
             Contents = new List<Content>();
             Description = "";
