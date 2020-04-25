@@ -12,7 +12,8 @@ namespace food
     public partial class AddRecipePage 
     {
         private List<Content> contents;
-        private RecipePanel panel = null;
+        private RecipePanel AddPanelView = null;
+        private bool isPanelViewVisible = false;
         public AddRecipePage()
         {
             InitializeComponent();
@@ -28,17 +29,21 @@ namespace food
         {
             gridAddPanelPlace.Children.Clear();
             gridAddPanelPlace.Visibility = Visibility.Hidden;
-            panel = null;
+            AddPanelView = null;
+            isPanelViewVisible = false;
         }
 
         private void btnAddContent_Click(object sender, RoutedEventArgs e)
         {
-
-            panel = new RecipePanel();
-            panel.addToListOfContentsEvent += addToListRecipe;
-            panel.closeEvent += closeAddPanel;
+            if (isPanelViewVisible)
+                return;
+            AddPanelView = new RecipePanel();
+            AddPanelView.addToListOfContentsEvent += addToListRecipe;
+            AddPanelView.closeEvent += closeAddPanel;
             this.gridAddPanelPlace.Visibility = Visibility.Visible;
-            this.gridAddPanelPlace.Children.Add(panel);
+            this.gridAddPanelPlace.Children.Add(AddPanelView);
+            isPanelViewVisible = true;
+
         }
     }
 }

@@ -24,8 +24,8 @@ namespace food
 
         private void HideAddNewContentPanel()
         {
-            this.grdNewContentAdd.Visibility = Visibility.Hidden;
-            this.grdNewContent.Visibility = Visibility.Visible;
+            this.grdNewContent.Visibility = Visibility.Hidden;
+            this.grdNewContentAdd.Visibility = Visibility.Visible;
         }
 
         private void ShowAddNewContentPanel()

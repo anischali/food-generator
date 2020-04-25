@@ -11,6 +11,6 @@
         <Rectangle x:Name="TagsRect" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="312" Margin="13,64,0,0" Stroke="Black" VerticalAlignment="Top" Width="222"/>
         <Label Content="Tags" HorizontalAlignment="Left" Margin="13,38,0,0" VerticalAlignment="Top" Width="89"/>
         <ComboBox x:Name="TagsList" HorizontalAlignment="Left" Margin="122,38,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="0.5,0.5" Height="22" IsReadOnly="True"/>
-        <Button Content="Génerer" HorizontalAlignment="Left" Margin="240,341,0,0" VerticalAlignment="Top" Width="123" Height="35" RenderTransformOrigin="0.389,0.573"/>
+        <Button Content="Génerer" HorizontalAlignment="Left" Margin="240,341,0,0" VerticalAlignment="Top" Width="123" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
     </Grid>
 </UserControl>

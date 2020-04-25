@@ -7,15 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Viewbox x:Name="AddRecipeView" Stretch="Fill">
-        <Grid Height="434" Width="762">
+        <Grid Height="440" Width="762">
             <Label Content="Nom de la recette" HorizontalAlignment="Left" Margin="62,54,0,0" VerticalAlignment="Top" Width="224"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="291,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="412"/>
             <Label Content="Ingrédients" HorizontalAlignment="Left" Margin="62,90,0,0" VerticalAlignment="Top" Width="152"/>
             <Label Content="Description" HorizontalAlignment="Left" Margin="62,235,0,0" VerticalAlignment="Top" Width="170"/>
-            <TextBox HorizontalAlignment="Left" Height="151" Margin="62,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="641"/>
             <ListView x:Name="lstContententList" HorizontalAlignment="Left" Height="100" Margin="62,130,0,0" VerticalAlignment="Top" Width="641" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutomationProperties.IsColumnHeader="True">
                 <ListView.View>
-                    <GridView AllowsColumnReorder="True"> 
+                    <GridView AllowsColumnReorder="True">
                         <GridViewColumn Header="Nom" Width="120" Block.TextAlignment="Center" DisplayMemberBinding="{Binding name}"/>
                         <GridViewColumn Header="Quantité" Width="120" Block.TextAlignment="Center" DisplayMemberBinding="{Binding quantity}"/>
                         <GridViewColumn Header= "" Block.TextAlignment="Center" Width="120" DisplayMemberBinding="{Binding edit}"/>
@@ -23,8 +22,13 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Button x:Name="btnAddContent" Content="➕" HorizontalAlignment="Left" Margin="677,111,0,0" VerticalAlignment="Top" Width="26" Height="19" Click="btnAddContent_Click"/>
-            <Grid x:Name="gridAddPanelPlace" HorizontalAlignment="Left" Height="100" Margin="114,198,0,0" VerticalAlignment="Top" Width="552" Visibility="Hidden"/>
+            <Button x:Name="btnAddContent" Content="➕" HorizontalAlignment="Left" Margin="677,111,0,0" VerticalAlignment="Top" Width="26" Height="19" Click="btnAddContent_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+            <Grid x:Name="gridAddPanelPlace" HorizontalAlignment="Left" Height="112" Margin="100,149,0,0" VerticalAlignment="Top" Width="552"/>
+            <RichTextBox HorizontalAlignment="Left" Height="135" Margin="62,266,0,0" VerticalAlignment="Top" Width="641">
+                <FlowDocument/>
+            </RichTextBox>
+            <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="571,411,0,0" VerticalAlignment="Top" Width="48" Height="24" Click="btnAddContent_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+            <Button x:Name="btnValidate" Content="✔" HorizontalAlignment="Left" Margin="188,411,0,0" VerticalAlignment="Top" Width="48" Height="24" Click="btnAddContent_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" RenderTransformOrigin="-8.055,1.279"/>
 
         </Grid>
     </Viewbox>
