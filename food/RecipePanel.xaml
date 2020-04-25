@@ -4,23 +4,34 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:food"
-             mc:Ignorable="d" d:DesignWidth="800" Height="733.442">
-    <Grid Margin="0,0,0,-0.4">
-        <Label Content="Nom de l'ingredient" HorizontalAlignment="Left" Margin="114,172,0,0" VerticalAlignment="Top" Height="29" Width="182"/>
-        <ComboBox HorizontalAlignment="Left" Margin="486,172,0,0" VerticalAlignment="Top" Width="228"/>
-        <Label Content="Quantité" HorizontalAlignment="Left" Margin="114,247,0,0" VerticalAlignment="Top" Height="29" Width="182"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="486,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228"/>
-        <Button Content="Ajouter" HorizontalAlignment="Left" Margin="114,631,0,0" VerticalAlignment="Top" Width="182" Height="70"/>
-        <Button Content="Annuler" HorizontalAlignment="Left" Margin="532,631,0,0" VerticalAlignment="Top" Width="182" Height="70" Click="Button_Click"/>
-        <Grid HorizontalAlignment="Left" Height="278" Margin="114,309,0,0" VerticalAlignment="Top" Width="600">
-            <Label Content="Nom de l'ingredient" HorizontalAlignment="Left" Margin="47,10,0,0" VerticalAlignment="Top" Height="29" Width="182"/>
-            <Label Content="Type" HorizontalAlignment="Left" Margin="47,61,0,0" VerticalAlignment="Top" Height="29" Width="182"/>
-        </Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="486,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="228"/>
-        <ComboBox HorizontalAlignment="Left" Margin="486,372,0,0" VerticalAlignment="Top" Width="228"/>
-        <Button Content="Valider" HorizontalAlignment="Left" Margin="221,498,0,0" VerticalAlignment="Top" Width="105" Height="32"/>
-        <Button Content="Annuler" HorizontalAlignment="Left" Margin="510,498,0,0" VerticalAlignment="Top" Width="105" Height="32"/>
-        <Button Content="Nouvel ingrédient" HorizontalAlignment="Left" Margin="608,10,0,0" VerticalAlignment="Top" Width="182" Height="29"/>
+             mc:Ignorable="d" Height="110" Width="399.8">
+    <Canvas Margin="225,0,190,543.6">
+        <Grid x:Name="grdNewContentAdd" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Left="-216" Canvas.Top="10">
+            <Label Content="Nom de l'ingredient" HorizontalAlignment="Left" VerticalAlignment="Top" Height="29" Width="182"/>
+            <ComboBox x:Name="cmbContent" HorizontalAlignment="Left" VerticalAlignment="Top" Width="228" RenderTransformOrigin="0.372,0.661" Margin="122,0,0,0" Foreground="Black" BorderBrush="#FFACACAC">
+                <ComboBox.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                        <GradientStop Color="#FFE5E5E5" Offset="1"/>
+                    </LinearGradientBrush>
+                </ComboBox.Background>
+            </ComboBox>
+            <Label Content="Quantité" HorizontalAlignment="Left" VerticalAlignment="Top" Height="29" Width="182" Margin="0,22,0,0"/>
+            <TextBox x:Name="txtContentQuantity" Height="23" Margin="0,27,-0.2,45.2" TextWrapping="Wrap" HorizontalAlignment="Right" Width="263"/>
+            <Button x:Name="btnValidate" Content="✔" HorizontalAlignment="Left" Margin="53,62,0,0" VerticalAlignment="Bottom" Width="32" Height="32" Click="btnValidate_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+            <Button x:Name="btnNewContent" Content="✨" HorizontalAlignment="Right" Margin="350,0,0,0" VerticalAlignment="Top" Width="35" Height="22" Click="btnNewContent_Click" Foreground="#FFF3F3F3" Background="#FF0B1797" BorderBrush="#FFBBD624"/>
+            <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Right" Margin="0,63,54.6,0" VerticalAlignment="Top" Width="32" Height="32" Click="btnCancel_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
 
-    </Grid>
+        </Grid>
+        <Grid x:Name="grdNewContent" HorizontalAlignment="Center" VerticalAlignment="Center" Width="386" Canvas.Top="10" Canvas.Left="-216" Visibility="Hidden">
+            <TextBox x:Name="txtContentName" HorizontalAlignment="Right" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+            <ComboBox x:Name="cmbContentType" HorizontalAlignment="Right" Margin="0,28,0,0" VerticalAlignment="Top" Width="260"/>
+            <Button x:Name="btnContentSubmit" Content="✔" HorizontalAlignment="Left" Margin="45,57,0,-0.4" VerticalAlignment="Bottom" Width="32" Height="32" Click="btnContentSubmit_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+            <Button x:Name="btnContentCancel" Content="❌" HorizontalAlignment="Right" Margin="0,57,55,-0.2" VerticalAlignment="Top" Width="32" Height="32" Click="btnContentCancel_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+            <Label Content="Nom de l'ingredient" HorizontalAlignment="Left" VerticalAlignment="Top" Height="29" Width="182"/>
+            <Label Content="Type" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="29" Width="182"/>
+
+        </Grid>
+
+    </Canvas>
 </UserControl>

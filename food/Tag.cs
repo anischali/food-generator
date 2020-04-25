@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace food
+﻿namespace food
 {
     internal enum Tag
     {
+        Undefined = -1,
         Winter = 0,
         Summer = 1,
         Party = 2,

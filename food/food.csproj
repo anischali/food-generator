@@ -60,6 +60,7 @@
       <DependentUpon>AddRecipePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content.cs" />
+    <Compile Include="Delegates.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="GeneratorPage.xaml.cs">
       <DependentUpon>GeneratorPage.xaml</DependentUpon>

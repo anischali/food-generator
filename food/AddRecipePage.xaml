@@ -24,6 +24,7 @@
                 </ListView.View>
             </ListView>
             <Button x:Name="btnAddContent" Content="➕" HorizontalAlignment="Left" Margin="677,111,0,0" VerticalAlignment="Top" Width="26" Height="19" Click="btnAddContent_Click"/>
+            <Grid x:Name="gridAddPanelPlace" HorizontalAlignment="Left" Height="100" Margin="114,198,0,0" VerticalAlignment="Top" Width="552" Visibility="Hidden"/>
 
         </Grid>
     </Viewbox>

@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace food
 {
@@ -20,14 +9,62 @@ namespace food
     /// </summary>
     public partial class RecipePanel : UserControl
     {
-        public RecipePanel()
+        private Content content;
+        private Content[] contents; 
+        internal Delegates.addToListOfContentsDelegate addToListOfContentsEvent;
+        internal Delegates.addContentsToDatabaseDelegate addNewContentToDatabaseEvent;
+        internal Delegates.closeAddContentPanelDelegate closeEvent;
+
+        internal RecipePanel()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+
+        private void HideAddNewContentPanel()
         {
-                    
+            this.grdNewContentAdd.Visibility = Visibility.Hidden;
+            this.grdNewContent.Visibility = Visibility.Visible;
+        }
+
+        private void ShowAddNewContentPanel()
+        {
+            this.grdNewContentAdd.Visibility = Visibility.Hidden;
+            this.grdNewContent.Visibility = Visibility.Visible;
+        }
+
+        private void btnContentSubmit_Click(object sender, RoutedEventArgs e)
+        {
+            content.Name = this.txtContentName.Text;
+            content.type = (Tag)this.cmbContentType.SelectedIndex;
+            addNewContentToDatabaseEvent(content);
+
+        }
+
+        private void btnNewContent_Click(object sender, RoutedEventArgs e)
+        {
+            content = new Content();
+            ShowAddNewContentPanel();
+        }
+
+        private void btnValidate_Click(object sender, RoutedEventArgs e)
+        {
+
+            content.Quantity = Double.Parse(this.txtContentQuantity.Text);
+            addToListOfContentsEvent(content);
+            closeEvent();
+        }
+
+        private void btnContentCancel_Click(object sender, RoutedEventArgs e)
+        {
+            HideAddNewContentPanel();
+            content = null;
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            closeEvent();
         }
     }
 }
