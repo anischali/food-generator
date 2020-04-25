@@ -12,5 +12,6 @@
         <Label Content="Tags" HorizontalAlignment="Left" Margin="13,38,0,0" VerticalAlignment="Top" Width="89"/>
         <ComboBox x:Name="TagsList" HorizontalAlignment="Left" Margin="122,38,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="0.5,0.5" Height="22" IsReadOnly="True"/>
         <Button Content="Génerer" HorizontalAlignment="Left" Margin="240,341,0,0" VerticalAlignment="Top" Width="123" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+        <StackPanel x:Name="spnlTags" HorizontalAlignment="Left" Height="301" Margin="20,69,0,0" VerticalAlignment="Top" Width="210" Grid.Row="20" Grid.Column="10" Grid.ColumnSpan="10" ScrollViewer.HorizontalScrollBarVisibility="Visible" CanVerticallyScroll="True"/>
     </Grid>
 </UserControl>

@@ -71,6 +71,7 @@
       <DependentUpon>RecipePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tag.cs" />
+    <Compile Include="Tools.cs" />
     <Page Include="AddRecipePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

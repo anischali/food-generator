@@ -30,13 +30,17 @@ namespace food
         {
             CheckBox senderBox = (CheckBox)sender;
             Generator.TagsToUseInSearch.Remove((Tag)senderBox.Tag);
-
+            Label lbl = new Label();
+            lbl.Content = senderBox.Content;
+            lbl.Name = $"{Tools.StringBonify(senderBox.Content.ToString())}";
+            this.spnlTags.Children.Add(lbl);
         }
 
         public void OnTagUncheckedEvent(object sender, RoutedEventArgs args)
         {
             CheckBox senderBox = (CheckBox)sender;
             Generator.TagsToUseInSearch.Remove((Tag)senderBox.Tag);
+            
         }
 
         public void PopulateTagsList()
