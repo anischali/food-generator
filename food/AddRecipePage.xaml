@@ -12,13 +12,12 @@
             <TextBox HorizontalAlignment="Left" Height="23" Margin="291,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="412"/>
             <Label Content="Ingrédients" HorizontalAlignment="Left" Margin="62,90,0,0" VerticalAlignment="Top" Width="152"/>
             <Label Content="Description" HorizontalAlignment="Left" Margin="62,235,0,0" VerticalAlignment="Top" Width="170"/>
-            <ListView x:Name="lstContententList" HorizontalAlignment="Left" Height="100" Margin="62,130,0,0" VerticalAlignment="Top" Width="641" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutomationProperties.IsColumnHeader="True">
+            <ListView x:Name="lstContententList" HorizontalAlignment="Left" Height="100" Margin="62,130,0,0" VerticalAlignment="Top" Width="641" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutomationProperties.IsColumnHeader="True" IsSynchronizedWithCurrentItem="True">
                 <ListView.View>
                     <GridView AllowsColumnReorder="True">
-                        <GridViewColumn Header="Nom" Width="120" Block.TextAlignment="Center" DisplayMemberBinding="{Binding name}"/>
-                        <GridViewColumn Header="Quantité" Width="120" Block.TextAlignment="Center" DisplayMemberBinding="{Binding quantity}"/>
-                        <GridViewColumn Header= "" Block.TextAlignment="Center" Width="120" DisplayMemberBinding="{Binding edit}"/>
-                        <GridViewColumn Header= "" Block.TextAlignment="Center" Width="120" DisplayMemberBinding="{Binding remove}"/>
+                        <GridViewColumn Header="Nom" Width="120" Block.TextAlignment="Center" DisplayMemberBinding="{Binding Path=name}"/>
+                        <GridViewColumn Header="Quantité" Width="120" Block.TextAlignment="Center" DisplayMemberBinding="{Binding Path=quantity}"/>
+                        <GridViewColumn Header= "Unit" Block.TextAlignment="Center" Width="120" DisplayMemberBinding="{Binding Path=unit}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

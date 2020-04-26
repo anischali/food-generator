@@ -12,10 +12,7 @@ namespace food
         internal string Name { get; set; }
         [DataMember]
         internal Tag type { get; set; }
-        [DataMember]
-        internal double Quantity { get; set; }
-        [DataMember]
-        internal Unit QuantityUnit { get; set; } 
+
 
 
         internal Content(String name, Tag tag, double quantity, Unit unit)
@@ -23,8 +20,6 @@ namespace food
             uid = Guid.NewGuid().ToString();
             Name = name;
             type = tag;
-            Quantity = quantity;
-            QuantityUnit = unit;
         }
 
         internal Content()
@@ -32,8 +27,6 @@ namespace food
             uid = Guid.NewGuid().ToString();
             Name = "Undefined";
             type = Tag.Undefined;
-            Quantity = -1;
-            QuantityUnit = Unit.Undefined;
         }
     }
 }

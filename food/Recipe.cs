@@ -12,7 +12,7 @@ namespace food
         [DataMember]
         internal List<Tag> Tags { get; set; }
         [DataMember]
-        internal List<Content> Contents { get; set; }
+        internal List<RecipeContent> Contents { get; set; }
         [DataMember]
         internal string Description { get; set; }
         [DataMember]
@@ -22,7 +22,7 @@ namespace food
         {
             uid = Guid.NewGuid().ToString();
             Tags = new List<Tag>();
-            Contents = new List<Content>();
+            Contents = new List<RecipeContent>();
             Description = "";
             PeopleNumber = -1;
         }

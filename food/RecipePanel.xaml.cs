@@ -11,7 +11,7 @@ namespace food
     /// </summary>
     public partial class RecipePanel : UserControl
     {
-        private Content content;
+        
         internal Delegates.addToListOfContentsDelegate addToListOfContentsEvent;
         internal Delegates.addContentsToDatabaseDelegate addNewContentToDatabaseEvent;
         internal Delegates.closeAddContentPanelDelegate closeEvent;
@@ -38,7 +38,8 @@ namespace food
 
         private void btnContentSubmit_Click(object sender, RoutedEventArgs e)
         {
-            content = new Content();
+
+            Content content = new Content();
             int idx = cmbContentType.SelectedIndex;
             content.Name = this.txtContentName.Text;
             content.type = (Tag)((idx != -1) ? idx + 4 : idx);
@@ -57,20 +58,18 @@ namespace food
             int idx = cmbContent.SelectedIndex;
             if (idx < 0)
                 return;
-            content = new Content();
-            content.uid = IO.Database.contents[idx].uid;
-            content.Name = IO.Database.contents[idx].Name;
-            content.type = IO.Database.contents[idx].type;
-            content.Quantity = Double.Parse(this.txtContentQuantity.Text);
-            content.QuantityUnit = (Unit) this.cmbQuantityUnit.SelectedIndex;
-            addToListOfContentsEvent(content);
+            Content content = IO.Database.contents[idx];
+            RecipeContent rcontent = new RecipeContent();
+            rcontent.uid = content.uid;
+            rcontent.Quantity = Double.Parse(this.txtContentQuantity.Text);
+            rcontent.QuantityUnit = (Unit) this.cmbQuantityUnit.SelectedIndex;
+            addToListOfContentsEvent(rcontent);
             closeEvent();
         }
 
         private void btnContentCancel_Click(object sender, RoutedEventArgs e)
         {
             HideAddNewContentPanel();
-            content = null;
         }
 
         

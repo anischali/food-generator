@@ -3,26 +3,42 @@ using System.Windows;
 
 namespace food
 {
+    internal class ContentBind
+    {
+        public string name { get; set; }
+        public double quantity { get; set; }
+        public string unit { get; set; }
+
+    }
     /// <summary>
     /// Logique d'interaction pour AddRecipePage.xaml
     /// </summary>
 
-
+    
     public partial class AddRecipePage
     {
-        private List<Content> contents;
+        private Recipe recipe;
         private RecipePanel AddPanelView = null;
         private bool isPanelViewVisible = false;
         public AddRecipePage()
         {
             InitializeComponent();
-            contents = new List<Content>();
+            recipe = new Recipe();
         }
 
-        private void addToListRecipe(Content content)
+        
+
+        private void addToListRecipe(RecipeContent content)
         {
-            contents.Add(content);
-            lstContententList.ItemsSource = contents;
+            recipe.Contents.Add(content);
+            ContentBind cb = new ContentBind() 
+            { 
+                name = Tools.FindContentNameByUid(content.uid),
+                quantity = content.Quantity,
+                unit = ((content.QuantityUnit != Unit.Undefined) ? 
+                Generator.units[((int)content.QuantityUnit)] : "Unknown")
+            };
+            lstContententList.Items.Add(cb);
         }
 
         private void closeAddPanel()

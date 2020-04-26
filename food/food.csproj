@@ -77,6 +77,7 @@
     <Compile Include="HistoryRecipe.cs" />
     <Compile Include="IO\Database.cs" />
     <Compile Include="Recipe.cs" />
+    <Compile Include="RecipeContent.cs" />
     <Compile Include="RecipePanel.xaml.cs">
       <DependentUpon>RecipePanel.xaml</DependentUpon>
     </Compile>

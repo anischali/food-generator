@@ -20,8 +20,6 @@ namespace food.IO
 
         internal static void AddContentToDatabase(Content content)
         {
-            content.Quantity = -1.0;
-            content.QuantityUnit = Unit.Undefined;
             contents.Add(content);
             Tools.SaveToJSON<List<Content>>(contents, path, contents_fileName);
         }

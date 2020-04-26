@@ -39,5 +39,15 @@ namespace food
         {
             return content.Name;
         }
+
+        internal static string FindContentNameByUid(string uid)
+        {
+            foreach (Content c in IO.Database.contents)
+            {
+                if (c.uid == uid)
+                    return c.Name;
+            }
+            return "Unknown";
+        }
     }
 }
