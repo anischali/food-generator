@@ -39,6 +39,7 @@ namespace food
             AddPanelView = new RecipePanel();
             AddPanelView.addToListOfContentsEvent += addToListRecipe;
             AddPanelView.closeEvent += closeAddPanel;
+            AddPanelView.addNewContentToDatabaseEvent += IO.Database.AddContentToDatabase;
             this.gridAddPanelPlace.Visibility = Visibility.Visible;
             this.gridAddPanelPlace.Children.Add(AddPanelView);
             isPanelViewVisible = true;

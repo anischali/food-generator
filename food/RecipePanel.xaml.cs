@@ -36,10 +36,14 @@ namespace food
 
         private void btnContentSubmit_Click(object sender, RoutedEventArgs e)
         {
+            if (content == null)
+            {
+                content = new Content();
+            }
             content.Name = this.txtContentName.Text;
             content.type = (Tag)this.cmbContentType.SelectedIndex;
             addNewContentToDatabaseEvent(content);
-
+            HideAddNewContentPanel();
         }
 
         private void btnNewContent_Click(object sender, RoutedEventArgs e)
