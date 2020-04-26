@@ -6,8 +6,8 @@
         Winter = 0,
         Summer = 1,
         Party = 2,
-        Dessert = 3,
-        Snack = 4,
+        Snack = 3,
+        Dessert = 4,
         Picnic = 5,
         Meat = 6,
         Chicken = 7,
@@ -18,6 +18,4 @@
         Pulses = 12,
         Other = 13
     }
-
-
 }

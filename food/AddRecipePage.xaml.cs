@@ -22,6 +22,7 @@ namespace food
         private void addToListRecipe(Content content)
         {
             contents.Add(content);
+            lstContententList.ItemsSource = contents;
         }
 
         private void closeAddPanel()

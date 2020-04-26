@@ -82,6 +82,7 @@
     </Compile>
     <Compile Include="Tag.cs" />
     <Compile Include="Tools.cs" />
+    <Compile Include="Unit.cs" />
     <Page Include="AddRecipePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

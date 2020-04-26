@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace food.IO
 {
@@ -11,55 +12,52 @@ namespace food.IO
         private const string recipe_fileName = "recipes.json";
         private const string history_fileName = "history.json";
         private static string path = $"{Environment.GetEnvironmentVariable("APPDATA")}\\FoodGenerator\\Databases\\";
-        internal static List<Content> contents = new List<Content>();
-        private static bool isContentsListChanged = false;
-        internal static List<Recipe> AllMenus = new List<Recipe>();
-        private static bool isRecipeListChanged = false;
-        internal static List<Recipe> HistoryMenus = new List<Recipe>();
-        private static bool isHistoryListChanged = false;
+        internal static List<Content> contents;
+        internal static List<Recipe> AllMenus;
+        internal static List<HistoryRecipe> HistoryMenus;
+        
 
-        internal static void SaveContents()
-        {
-            if (isContentsListChanged)
-            {
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-
-                string contents_json = JsonConvert.SerializeObject(contents);
-                File.WriteAllText(Path.Combine(path, contents_fileName), contents_json);
-                isContentsListChanged = false;
-            }
-        }
-
-        internal static void SaveRecipes()
-        {
-            if (isRecipeListChanged)
-            {
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-
-                string recipe_json = JsonConvert.SerializeObject(AllMenus);
-                File.WriteAllText(Path.Combine(path, recipe_fileName), recipe_json);
-                isRecipeListChanged = false;
-            }
-        }
 
         internal static void AddContentToDatabase(Content content)
         {
+            content.Quantity = -1.0;
+            content.QuantityUnit = Unit.Undefined;
             contents.Add(content);
-            isContentsListChanged = true;
-            SaveContents();
+            Tools.SaveToJSON<List<Content>>(contents, path, contents_fileName);
         }
 
         internal static void AddRecipeToDatabase(Recipe recipe)
         {
             AllMenus.Add(recipe);
-            isRecipeListChanged = true;
-            SaveRecipes();
+            Tools.SaveToJSON<List<Recipe>>(AllMenus, path, recipe_fileName);
+        }
+
+        internal static void AddRecipeListToHistoryDatabase(HistoryRecipe historyRecipe)
+        {
+            HistoryMenus.Add(historyRecipe);
+            Tools.SaveToJSON<List<HistoryRecipe>>(HistoryMenus, path, history_fileName);
+        }
+
+        internal static void SaveAllDatabases()
+        {
+            Tools.SaveToJSON<List<Recipe>>(AllMenus, path, recipe_fileName);
+            Tools.SaveToJSON<List<HistoryRecipe>>(HistoryMenus, path, history_fileName);
+            Tools.SaveToJSON<List<Content>>(contents, path, contents_fileName);
+        }
+
+        internal static void LoadAllDatabases()
+        {
+            contents = Tools.LoadFromJSON<List<Content>>(Path.Combine(path, contents_fileName));
+            if (contents == null)
+                contents = new List<Content>();
+            AllMenus = Tools.LoadFromJSON<List<Recipe>>(Path.Combine(path, recipe_fileName));
+            if (AllMenus == null)
+                AllMenus = new List<Recipe>();
+            HistoryMenus = Tools.LoadFromJSON<List<HistoryRecipe>>(Path.Combine(path, history_fileName));
+            if (HistoryMenus == null)
+            {
+                HistoryMenus = new List<HistoryRecipe>();
+            }
         }
 
 

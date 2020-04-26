@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace food
 {
@@ -10,7 +12,6 @@ namespace food
     public partial class RecipePanel : UserControl
     {
         private Content content;
-        private Content[] contents;
         internal Delegates.addToListOfContentsDelegate addToListOfContentsEvent;
         internal Delegates.addContentsToDatabaseDelegate addNewContentToDatabaseEvent;
         internal Delegates.closeAddContentPanelDelegate closeEvent;
@@ -18,6 +19,7 @@ namespace food
         internal RecipePanel()
         {
             InitializeComponent();
+            PopulateAllComboBoxs();
         }
 
 
@@ -36,26 +38,31 @@ namespace food
 
         private void btnContentSubmit_Click(object sender, RoutedEventArgs e)
         {
-            if (content == null)
-            {
-                content = new Content();
-            }
+            content = new Content();
+            int idx = cmbContentType.SelectedIndex;
             content.Name = this.txtContentName.Text;
-            content.type = (Tag)this.cmbContentType.SelectedIndex;
+            content.type = (Tag)((idx != -1) ? idx + 4 : idx);
             addNewContentToDatabaseEvent(content);
+            PopulateContentComboBox();
             HideAddNewContentPanel();
         }
 
         private void btnNewContent_Click(object sender, RoutedEventArgs e)
         {
-            content = new Content();
             ShowAddNewContentPanel();
         }
 
         private void btnValidate_Click(object sender, RoutedEventArgs e)
         {
-
+            int idx = cmbContent.SelectedIndex;
+            if (idx < 0)
+                return;
+            content = new Content();
+            content.uid = IO.Database.contents[idx].uid;
+            content.Name = IO.Database.contents[idx].Name;
+            content.type = IO.Database.contents[idx].type;
             content.Quantity = Double.Parse(this.txtContentQuantity.Text);
+            content.QuantityUnit = (Unit) this.cmbQuantityUnit.SelectedIndex;
             addToListOfContentsEvent(content);
             closeEvent();
         }
@@ -64,6 +71,22 @@ namespace food
         {
             HideAddNewContentPanel();
             content = null;
+        }
+
+        
+        private void PopulateAllComboBoxs()
+        {
+            List<string> contentsType = new List<string>(Generator.tags);
+            contentsType.RemoveRange(0, 4);
+            cmbContentType.ItemsSource = contentsType;
+            PopulateContentComboBox();
+            cmbQuantityUnit.ItemsSource = Generator.units;
+        }
+
+        private void PopulateContentComboBox()
+        {
+            List<string> allContentsString = IO.Database.contents.ConvertAll<string>(Tools.ContentToStringConverter);
+            cmbContent.ItemsSource = allContentsString;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

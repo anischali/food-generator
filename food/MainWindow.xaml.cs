@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 
 namespace food
 {
@@ -11,9 +12,14 @@ namespace food
         {
             InitializeComponent();
             Button_Click_1(null, null);
+            IO.Database.LoadAllDatabases();
+            Closing += MainWindow_Closing; 
         }
 
-
+        private void MainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            IO.Database.SaveAllDatabases();
+        }
 
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
