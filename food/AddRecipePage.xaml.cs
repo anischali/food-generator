@@ -8,7 +8,7 @@ namespace food
     /// </summary>
 
 
-    public partial class AddRecipePage 
+    public partial class AddRecipePage
     {
         private List<Content> contents;
         private RecipePanel AddPanelView = null;

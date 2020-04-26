@@ -10,7 +10,7 @@ namespace food
     public partial class RecipePanel : UserControl
     {
         private Content content;
-        private Content[] contents; 
+        private Content[] contents;
         internal Delegates.addToListOfContentsDelegate addToListOfContentsEvent;
         internal Delegates.addContentsToDatabaseDelegate addNewContentToDatabaseEvent;
         internal Delegates.closeAddContentPanelDelegate closeEvent;

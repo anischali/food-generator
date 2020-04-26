@@ -10,7 +10,7 @@ namespace food
         public MainWindow()
         {
             InitializeComponent();
-            Button_Click_1(null,null);
+            Button_Click_1(null, null);
         }
 
 

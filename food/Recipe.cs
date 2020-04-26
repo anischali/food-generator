@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace food
 {
+    [DataContract]
     internal class Recipe
     {
-        internal List<Tag> Tags { get; set; }
-        internal List<Content> Contents { get; set; }
-        internal string Description { get; set; }
-        internal int PeopleNumber { get; set; }
+        [DataMember]
         internal string uid { get; private set; }
+        [DataMember]
+        internal List<Tag> Tags { get; set; }
+        [DataMember]
+        internal List<Content> Contents { get; set; }
+        [DataMember]
+        internal string Description { get; set; }
+        [DataMember]
+        internal int PeopleNumber { get; set; }
 
         internal Recipe()
         {

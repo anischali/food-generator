@@ -74,6 +74,7 @@
     <Compile Include="GeneratorPage.xaml.cs">
       <DependentUpon>GeneratorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HistoryRecipe.cs" />
     <Compile Include="IO\Database.cs" />
     <Compile Include="Recipe.cs" />
     <Compile Include="RecipePanel.xaml.cs">

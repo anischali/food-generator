@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.IO;
-using System.Text.RegularExpressions;
-using System.Windows.Documents;
+﻿using System.Text.RegularExpressions;
 
 namespace food
 {
@@ -14,9 +10,5 @@ namespace food
             return rx.Replace(old, "");
         }
 
-        internal static string JSONEncode(List<Content> contents)
-        {
-            return JsonConvert.SerializeObject(contents);
-        }
     }
 }
