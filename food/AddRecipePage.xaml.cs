@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace food
@@ -31,22 +32,35 @@ namespace food
         private void addToListRecipe(RecipeContent content)
         {
             recipe.Contents.Add(content);
-            ContentBind cb = new ContentBind() 
-            { 
+        }
+
+        private void addToListViewRecipe(RecipeContent content)
+        {
+            ContentBind cb = new ContentBind()
+            {
                 name = Tools.FindContentNameByUid(content.uid),
                 quantity = content.Quantity,
-                unit = ((content.QuantityUnit != Unit.Undefined) ? 
+                unit = ((content.QuantityUnit != Unit.Undefined) ?
                 Generator.units[((int)content.QuantityUnit)] : "Unknown")
             };
             lstContententList.Items.Add(cb);
         }
 
-        private void closeAddPanel()
+        private void UpdateListView()
+        {
+            lstContententList.Items.Clear();
+            foreach (RecipeContent rc in recipe.Contents)
+            {
+                addToListViewRecipe(rc);
+            }
+        }
+        private void CloseSubPanels()
         {
             gridAddPanelPlace.Children.Clear();
             gridAddPanelPlace.Visibility = Visibility.Hidden;
             AddPanelView = null;
             isPanelViewVisible = false;
+            UpdateListView();
         }
 
         private void btnAddContent_Click(object sender, RoutedEventArgs e)
@@ -55,12 +69,55 @@ namespace food
                 return;
             AddPanelView = new RecipePanel();
             AddPanelView.addToListOfContentsEvent += addToListRecipe;
-            AddPanelView.closeEvent += closeAddPanel;
+            AddPanelView.closeEvent += CloseSubPanels;
             AddPanelView.addNewContentToDatabaseEvent += IO.Database.AddContentToDatabase;
             this.gridAddPanelPlace.Visibility = Visibility.Visible;
             this.gridAddPanelPlace.Children.Add(AddPanelView);
             isPanelViewVisible = true;
 
+        }
+
+
+        private void RemoveRecipeContent(string uid)
+        {
+            foreach (RecipeContent rc in recipe.Contents)
+            {
+                if (rc.uid == uid)
+                {
+                    recipe.Contents.Remove(rc);
+                    break;
+                }
+            }
+        }
+
+        private void EditRecipeContent(string uid, double quantity, Unit unit)
+        {
+            foreach (RecipeContent rc in recipe.Contents)
+            {
+                if (rc.uid == uid)
+                {
+                    rc.Quantity = quantity;
+                    rc.QuantityUnit = unit;
+                    break;
+                }
+            }
+        }
+
+        private void lstContententList_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (lstContententList.SelectedItem == null || recipe.Contents.Count <= 0)
+                return;
+            ContentBind content = (ContentBind)lstContententList.SelectedItem;
+            RecipeContent rc = Tools.FindRecipeContentByName(recipe.Contents, content.name);
+            if (rc == null)
+                return;
+            EditRecipePanel editPanel = new EditRecipePanel(content.name, rc);
+            editPanel.editRecipeContent += EditRecipeContent;
+            editPanel.removeRecipeContent += RemoveRecipeContent;
+            editPanel.closeEvent += CloseSubPanels;
+            this.gridAddPanelPlace.Visibility = Visibility.Visible;
+            this.gridAddPanelPlace.Children.Add(editPanel);
+            isPanelViewVisible = true;
         }
     }
 }

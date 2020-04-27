@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -48,6 +49,29 @@ namespace food
                     return c.Name;
             }
             return "Unknown";
+        }
+
+        internal static Content FindContentByName(string name)
+        {
+            foreach (Content c in IO.Database.contents)
+            {
+                if (c.Name == name)
+                    return c;
+            }
+            return null;
+        }
+
+        internal static RecipeContent FindRecipeContentByName(List<RecipeContent> contents, string name)
+        {
+            Content content = FindContentByName(name);
+            if (content == null)
+                return null;
+            foreach (RecipeContent rc in contents)
+            {
+                if (rc.uid == content.uid)
+                    return rc;
+            }
+            return null;
         }
     }
 }

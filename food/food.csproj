@@ -70,6 +70,9 @@
     </Compile>
     <Compile Include="Content.cs" />
     <Compile Include="Delegates.cs" />
+    <Compile Include="EditRecipePanel.xaml.cs">
+      <DependentUpon>EditRecipePanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Generator.cs" />
     <Compile Include="GeneratorPage.xaml.cs">
       <DependentUpon>GeneratorPage.xaml</DependentUpon>
@@ -85,6 +88,10 @@
     <Compile Include="Tools.cs" />
     <Compile Include="Unit.cs" />
     <Page Include="AddRecipePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditRecipePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
