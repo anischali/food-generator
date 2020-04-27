@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Viewbox x:Name="AddRecipeView" Stretch="Fill">
-        <Grid Height="440" Width="762">
-            <Label Content="Nom de la recette" HorizontalAlignment="Left" Margin="62,54,0,0" VerticalAlignment="Top" Width="224"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="291,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="412"/>
-            <Label Content="Ingrédients" HorizontalAlignment="Left" Margin="62,90,0,0" VerticalAlignment="Top" Width="152"/>
+        <Grid Height="440" Width="762" Background="White">
+            <Label Content="Nom de la recette" HorizontalAlignment="Left" Margin="62,16,0,0" VerticalAlignment="Top" Width="224"/>
+            <TextBox x:Name="txtRecipeTitle" HorizontalAlignment="Left" Height="23" Margin="291,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="412"/>
+            <Label Content="Ingrédients" HorizontalAlignment="Left" Margin="62,99,0,0" VerticalAlignment="Top" Width="152"/>
             <Label Content="Description" HorizontalAlignment="Left" Margin="62,235,0,0" VerticalAlignment="Top" Width="170"/>
             <ListView x:Name="lstContententList" HorizontalAlignment="Left" Height="100" Margin="62,130,0,0" VerticalAlignment="Top" Width="641" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Visible" AutomationProperties.IsColumnHeader="True" IsSynchronizedWithCurrentItem="True" PreviewMouseUp="lstContententList_PreviewMouseUp">
                 <ListView.View>
@@ -23,11 +23,15 @@
             </ListView>
             <Button x:Name="btnAddContent" Content="➕" HorizontalAlignment="Left" Margin="677,111,0,0" VerticalAlignment="Top" Width="26" Height="19" Click="btnAddContent_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
             <Grid x:Name="gridAddPanelPlace" HorizontalAlignment="Left" Height="112" Margin="100,149,0,0" VerticalAlignment="Top" Width="552"/>
-            <RichTextBox HorizontalAlignment="Left" Height="135" Margin="62,266,0,0" VerticalAlignment="Top" Width="641">
+            <RichTextBox x:Name="rtxtRecipeDescription" HorizontalAlignment="Left" Height="135" Margin="62,266,0,0" VerticalAlignment="Top" Width="641">
                 <FlowDocument/>
             </RichTextBox>
-            <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="571,411,0,0" VerticalAlignment="Top" Width="48" Height="24" Click="btnAddContent_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
-            <Button x:Name="btnValidate" Content="✔" HorizontalAlignment="Left" Margin="188,411,0,0" VerticalAlignment="Top" Width="48" Height="24" Click="btnAddContent_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" RenderTransformOrigin="-8.055,1.279"/>
+            <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Left" Margin="571,401,0,0" VerticalAlignment="Top" Width="48" Height="24" Click="btnCancel_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+            <Button x:Name="btnValidate" Content="✔" HorizontalAlignment="Left" Margin="184,401,0,0" VerticalAlignment="Top" Width="48" Height="24" Click="btnValidate_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" RenderTransformOrigin="-8.055,1.279"/>
+            <Label Content="Tags de la recette" HorizontalAlignment="Left" Margin="62,42,0,0" VerticalAlignment="Top" Width="224"/>
+            <ComboBox x:Name="cmbRecipeTags" HorizontalAlignment="Left" Margin="583,45,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="2.081,-0.911"/>
+            <Label Content="Nombre de personnes" HorizontalAlignment="Left" Margin="62,68,0,0" VerticalAlignment="Top" Width="152"/>
+            <TextBox x:Name="txtPeopleNumber" HorizontalAlignment="Left" Height="23" Margin="662,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="41"/>
 
         </Grid>
     </Viewbox>

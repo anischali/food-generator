@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace food
 {
@@ -18,6 +19,7 @@ namespace food
     
     public partial class AddRecipePage
     {
+        internal Delegates.returnToHomePanel HomePanel;
         private Recipe recipe;
         private RecipePanel AddPanelView = null;
         private bool isPanelViewVisible = false;
@@ -25,6 +27,7 @@ namespace food
         {
             InitializeComponent();
             recipe = new Recipe();
+            PopulateTagsList();
         }
 
         
@@ -119,5 +122,53 @@ namespace food
             this.gridAddPanelPlace.Children.Add(editPanel);
             isPanelViewVisible = true;
         }
+
+
+        public void OnTagCheckedEvent(object sender, RoutedEventArgs args)
+        {
+            CheckBox senderBox = (CheckBox)sender;
+            recipe.Tags.Add((Tag)senderBox.Tag);
+        }
+
+        internal void OnTagUncheckedEvent(object sender, RoutedEventArgs args)
+        {
+            CheckBox senderBox = (CheckBox)sender;
+            recipe.Tags.Remove((Tag)senderBox.Tag);
+        }
+
+        internal void PopulateTagsList()
+        {
+            List<CheckBox> lst = new List<CheckBox>();
+            CheckBox chbTemp;
+            for (int i = 0; i < Generator.tags.Length; ++i)
+            {
+                chbTemp = new CheckBox();
+                chbTemp.IsChecked = false;
+                chbTemp.Content = Generator.tags[i];
+                chbTemp.Tag = i;
+                chbTemp.Checked += new RoutedEventHandler(OnTagCheckedEvent);
+                chbTemp.Unchecked += new RoutedEventHandler(OnTagUncheckedEvent);
+                lst.Add(chbTemp);
+            }
+
+            cmbRecipeTags.ItemsSource = lst;
+        }
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            HomePanel();
+        }
+
+        private void btnValidate_Click(object sender, RoutedEventArgs e)
+        {
+            recipe.PeopleNumber = int.Parse(txtPeopleNumber.Text);
+            recipe.title = txtRecipeTitle.Text;
+            IO.Database.AddRecipeToDatabase(recipe);
+            HomePanel();
+        }
+
     }
+
+
+
+
 }

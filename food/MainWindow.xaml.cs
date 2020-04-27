@@ -8,6 +8,7 @@ namespace food
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -21,6 +22,10 @@ namespace food
             IO.Database.SaveAllDatabases();
         }
 
+        private void Home()
+        {
+            Button_Click_1(null, null);
+        }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -32,6 +37,7 @@ namespace food
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             AddRecipePage recipePage = new AddRecipePage();
+            recipePage.HomePanel += Home;
             PanelOfUserControl.Children.Clear();
             PanelOfUserControl.Children.Add(recipePage);
         }

@@ -7,5 +7,6 @@
         internal delegate void closeAddContentPanelDelegate();
         internal delegate void editRecipeContentDelegate(string uid, double quantity, Unit unit);
         internal delegate void removeRecipeContentDelegate(string uid);
+        internal delegate void returnToHomePanel();
     }
 }

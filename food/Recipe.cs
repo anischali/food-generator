@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace food
 {
@@ -17,7 +19,8 @@ namespace food
         internal string Description { get; set; }
         [DataMember]
         internal int PeopleNumber { get; set; }
-
+        [DataMember]
+        internal string title;
         internal Recipe()
         {
             uid = Guid.NewGuid().ToString();
@@ -25,6 +28,7 @@ namespace food
             Contents = new List<RecipeContent>();
             Description = "";
             PeopleNumber = -1;
+            title = "";
         }
     }
 }
