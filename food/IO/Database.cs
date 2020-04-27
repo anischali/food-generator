@@ -1,8 +1,6 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.CompilerServices;
 
 namespace food.IO
 {
@@ -15,7 +13,7 @@ namespace food.IO
         internal static List<Content> contents;
         internal static List<Recipe> AllMenus;
         internal static List<HistoryRecipe> HistoryMenus;
-        
+
 
 
         internal static void AddContentToDatabase(Content content)

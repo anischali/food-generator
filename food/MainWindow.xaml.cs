@@ -14,7 +14,7 @@ namespace food
             InitializeComponent();
             Button_Click_1(null, null);
             IO.Database.LoadAllDatabases();
-            Closing += MainWindow_Closing; 
+            Closing += MainWindow_Closing;
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)

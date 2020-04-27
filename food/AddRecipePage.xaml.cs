@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,7 +15,7 @@ namespace food
     /// Logique d'interaction pour AddRecipePage.xaml
     /// </summary>
 
-    
+
     public partial class AddRecipePage
     {
         internal Delegates.returnToHomePanel HomePanel;
@@ -30,7 +29,7 @@ namespace food
             PopulateTagsList();
         }
 
-        
+
 
         private void addToListRecipe(RecipeContent content)
         {

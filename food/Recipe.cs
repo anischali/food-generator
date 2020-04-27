@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Windows.Controls;
-using System.Windows.Documents;
 
 namespace food
 {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 
 namespace food
 {
@@ -11,7 +10,7 @@ namespace food
     /// </summary>
     public partial class RecipePanel : UserControl
     {
-        
+
         internal Delegates.addToListOfContentsDelegate addToListOfContentsEvent;
         internal Delegates.addContentsToDatabaseDelegate addNewContentToDatabaseEvent;
         internal Delegates.closeAddContentPanelDelegate closeEvent;
@@ -62,7 +61,7 @@ namespace food
             RecipeContent rcontent = new RecipeContent();
             rcontent.uid = content.uid;
             rcontent.Quantity = Double.Parse(this.txtContentQuantity.Text);
-            rcontent.QuantityUnit = (Unit) this.cmbQuantityUnit.SelectedIndex;
+            rcontent.QuantityUnit = (Unit)this.cmbQuantityUnit.SelectedIndex;
             addToListOfContentsEvent(rcontent);
             closeEvent();
         }
@@ -72,7 +71,7 @@ namespace food
             HideAddNewContentPanel();
         }
 
-        
+
         private void PopulateAllComboBoxs()
         {
             List<string> contentsType = new List<string>(Generator.tags);
