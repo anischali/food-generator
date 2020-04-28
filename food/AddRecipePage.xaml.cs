@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace food
 {
@@ -161,6 +162,7 @@ namespace food
         {
             recipe.PeopleNumber = int.Parse(txtPeopleNumber.Text);
             recipe.title = txtRecipeTitle.Text;
+            recipe.Description = new TextRange(rtxtRecipeDescription.Document.ContentStart, rtxtRecipeDescription.Document.ContentEnd).Text;
             IO.Database.AddRecipeToDatabase(recipe);
             HomePanel();
         }
