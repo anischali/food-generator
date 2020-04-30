@@ -72,5 +72,15 @@ namespace food
             }
             return null;
         }
+
+        internal static Recipe FindRecipeByTitle(string title)
+        {
+            foreach (Recipe r in IO.Database.AllMenus)
+            {
+                if (r.title == title)
+                    return r;
+            }
+            return null;
+        }
     }
 }

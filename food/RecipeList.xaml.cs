@@ -20,6 +20,8 @@ namespace food
     /// </summary>
     public partial class RecipeList : UserControl
     {
+        private AddRecipePage EditRecipePage;
+
         public RecipeList()
         {
             InitializeComponent();
@@ -34,6 +36,48 @@ namespace food
             {
                 vwlRecipeList.Items.Add(r.title);
             }
+        }
+
+        private void GoBackHere()
+        {
+            vwlRecipeList.Items.Clear();
+            RecipeListPopulate();
+            GrdListView.Children.Remove(EditRecipePage);
+        }
+
+        private void BtnEditRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            Recipe SelectedRecipe =  Tools.FindRecipeByTitle((string)vwlRecipeList.SelectedItem);
+            if (SelectedRecipe == null)
+                return;
+            EditRecipePage = new AddRecipePage(SelectedRecipe);
+            EditRecipePage.HomePanel += GoBackHere;
+            
+            GrdListView.Children.Add(EditRecipePage);
+
+        }
+
+        private void BtnViewRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            Recipe SelectedRecipe = Tools.FindRecipeByTitle((string)vwlRecipeList.SelectedItem);
+            if (SelectedRecipe == null)
+                return;
+            EditRecipePage = new AddRecipePage(SelectedRecipe, true);
+            EditRecipePage.HomePanel += GoBackHere;
+
+            GrdListView.Children.Add(EditRecipePage);
+        }
+
+        private void BtnRemoveRecipe_Click(object sender, RoutedEventArgs e)
+        {
+            Recipe SelectedRecipe = Tools.FindRecipeByTitle((string)vwlRecipeList.SelectedItem);
+            if (SelectedRecipe == null)
+                return;
+            IO.Database.AllMenus.Remove(SelectedRecipe);
+            IO.Database.SaveAllDatabases();
+            vwlRecipeList.Items.Clear();
+            RecipeListPopulate();
+
         }
     }
 }

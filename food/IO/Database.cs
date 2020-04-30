@@ -22,8 +22,13 @@ namespace food.IO
             Tools.SaveToJSON<List<Content>>(contents, path, contents_fileName);
         }
 
-        internal static void AddRecipeToDatabase(Recipe recipe)
+        internal static void AddRecipeToDatabase(Recipe recipe, bool IsUpdate = false)
         {
+            if (IsUpdate)
+            {
+                UpdateRecipe(recipe);
+                return;
+            }
             AllMenus.Add(recipe);
             Tools.SaveToJSON<List<Recipe>>(AllMenus, path, recipe_fileName);
         }
@@ -56,7 +61,23 @@ namespace food.IO
             }
         }
 
+        internal static void UpdateRecipe(Recipe recipe)
+        {
+            foreach (Recipe r in AllMenus)
+            {
+                if (recipe.uid == r.uid)
+                {
+                    r.title = recipe.title;
+                    r.Tags = recipe.Tags;
+                    r.PeopleNumber = recipe.PeopleNumber;
+                    r.Description = recipe.Description;
+                    r.Contents = recipe.Contents;
+                    break;
+                }
+            }
+            Tools.SaveToJSON<List<Recipe>>(AllMenus, path, recipe_fileName);
 
+        }
 
     }
 }

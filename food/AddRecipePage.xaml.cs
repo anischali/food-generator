@@ -7,9 +7,9 @@ namespace food
 {
     internal class ContentBind
     {
-        public string name { get; set; }
-        public double quantity { get; set; }
-        public string unit { get; set; }
+        public string Name { get; set; }
+        public double Quantity { get; set; }
+        public string Unit { get; set; }
 
     }
     /// <summary>
@@ -23,27 +23,44 @@ namespace food
         private Recipe recipe;
         private RecipePanel AddPanelView = null;
         private bool isPanelViewVisible = false;
-        public AddRecipePage()
+        private bool IsEditMode = false;
+        private bool IsReadOnlyMode = false;
+        internal AddRecipePage(Recipe RecipeToEdit = null, bool IsReadOnly = false)
         {
             InitializeComponent();
-            recipe = new Recipe();
-            PopulateTagsList();
+            if (RecipeToEdit == null)
+            {
+                recipe = new Recipe();
+                PopulateTagsList();
+                return;
+            }
+            recipe = RecipeToEdit;
+            LoadRecipe();
+            IsEditMode = true;
+            IsReadOnlyMode = IsReadOnly;
         }
 
+        private void LoadRecipe()
+        {
+            UpdateListView();
+            PopulateTagsList(true);
+            txtRecipeTitle.Text = recipe.title;
+            txtPeopleNumber.Text = recipe.PeopleNumber.ToString();
+            rtxtRecipeDescription.AppendText(recipe.Description);
+        }
 
-
-        private void addToListRecipe(RecipeContent content)
+        private void AddToListRecipe(RecipeContent content)
         {
             recipe.Contents.Add(content);
         }
 
-        private void addToListViewRecipe(RecipeContent content)
+        private void AddToListViewRecipe(RecipeContent content)
         {
             ContentBind cb = new ContentBind()
             {
-                name = Tools.FindContentNameByUid(content.uid),
-                quantity = content.Quantity,
-                unit = ((content.QuantityUnit != Unit.Undefined) ?
+                Name = Tools.FindContentNameByUid(content.uid),
+                Quantity = content.Quantity,
+                Unit = ((content.QuantityUnit != Unit.Undefined) ?
                 Generator.units[((int)content.QuantityUnit)] : "Unknown")
             };
             lstContententList.Items.Add(cb);
@@ -51,10 +68,12 @@ namespace food
 
         private void UpdateListView()
         {
+            if (IsReadOnlyMode)
+                return;
             lstContententList.Items.Clear();
             foreach (RecipeContent rc in recipe.Contents)
             {
-                addToListViewRecipe(rc);
+                AddToListViewRecipe(rc);
             }
         }
         private void CloseSubPanels()
@@ -66,12 +85,12 @@ namespace food
             UpdateListView();
         }
 
-        private void btnAddContent_Click(object sender, RoutedEventArgs e)
+        private void BtnAddContent_Click(object sender, RoutedEventArgs e)
         {
-            if (isPanelViewVisible)
+            if (isPanelViewVisible || IsReadOnlyMode)
                 return;
             AddPanelView = new RecipePanel();
-            AddPanelView.addToListOfContentsEvent += addToListRecipe;
+            AddPanelView.addToListOfContentsEvent += AddToListRecipe;
             AddPanelView.closeEvent += CloseSubPanels;
             AddPanelView.addNewContentToDatabaseEvent += IO.Database.AddContentToDatabase;
             this.gridAddPanelPlace.Visibility = Visibility.Visible;
@@ -83,6 +102,8 @@ namespace food
 
         private void RemoveRecipeContent(string uid)
         {
+            if (IsReadOnlyMode)
+                return;
             foreach (RecipeContent rc in recipe.Contents)
             {
                 if (rc.uid == uid)
@@ -95,6 +116,8 @@ namespace food
 
         private void EditRecipeContent(string uid, double quantity, Unit unit)
         {
+            if (IsReadOnlyMode)
+                return;
             foreach (RecipeContent rc in recipe.Contents)
             {
                 if (rc.uid == uid)
@@ -106,15 +129,15 @@ namespace food
             }
         }
 
-        private void lstContententList_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void LstContententList_PreviewMouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (lstContententList.SelectedItem == null || recipe.Contents.Count <= 0)
                 return;
             ContentBind content = (ContentBind)lstContententList.SelectedItem;
-            RecipeContent rc = Tools.FindRecipeContentByName(recipe.Contents, content.name);
+            RecipeContent rc = Tools.FindRecipeContentByName(recipe.Contents, content.Name);
             if (rc == null)
                 return;
-            EditRecipePanel editPanel = new EditRecipePanel(content.name, rc);
+            EditRecipePanel editPanel = new EditRecipePanel(content.Name, rc);
             editPanel.editRecipeContent += EditRecipeContent;
             editPanel.removeRecipeContent += RemoveRecipeContent;
             editPanel.closeEvent += CloseSubPanels;
@@ -126,33 +149,52 @@ namespace food
 
         public void OnTagCheckedEvent(object sender, RoutedEventArgs args)
         {
+            if (IsReadOnlyMode)
+                return;
             CheckBox senderBox = (CheckBox)sender;
             recipe.Tags.Add((Tag)senderBox.Tag);
         }
 
         internal void OnTagUncheckedEvent(object sender, RoutedEventArgs args)
         {
+            if (IsReadOnlyMode)
+                return;
             CheckBox senderBox = (CheckBox)sender;
             recipe.Tags.Remove((Tag)senderBox.Tag);
         }
 
-        internal void PopulateTagsList()
+
+        private CheckBox CreateCheckBox(int tagIdx, bool checkBoxState = false)
+        {
+            CheckBox chbTemp = new CheckBox();
+            chbTemp.IsChecked = checkBoxState;
+            chbTemp.Content = Generator.tags[tagIdx];
+            chbTemp.Tag = tagIdx;
+            chbTemp.Checked += new RoutedEventHandler(OnTagCheckedEvent);
+            chbTemp.Unchecked += new RoutedEventHandler(OnTagUncheckedEvent);
+            return chbTemp;
+        }
+
+        internal void PopulateTagsList(bool isEdit = false)
         {
             List<CheckBox> lst = new List<CheckBox>();
-            CheckBox chbTemp;
+            
             for (int i = 0; i < Generator.tags.Length; ++i)
             {
-                chbTemp = new CheckBox();
-                chbTemp.IsChecked = false;
-                chbTemp.Content = Generator.tags[i];
-                chbTemp.Tag = i;
-                chbTemp.Checked += new RoutedEventHandler(OnTagCheckedEvent);
-                chbTemp.Unchecked += new RoutedEventHandler(OnTagUncheckedEvent);
-                lst.Add(chbTemp);
+                if (isEdit)
+                {
+                    if (recipe.Tags.Contains((Tag) i))
+                    {
+                        lst.Add(CreateCheckBox(i, true));
+                        continue;
+                    }
+                }
+                lst.Add(CreateCheckBox(i));
             }
-
             cmbRecipeTags.ItemsSource = lst;
         }
+
+
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             HomePanel();
@@ -160,10 +202,13 @@ namespace food
 
         private void btnValidate_Click(object sender, RoutedEventArgs e)
         {
-            recipe.PeopleNumber = int.Parse(txtPeopleNumber.Text);
-            recipe.title = txtRecipeTitle.Text;
-            recipe.Description = new TextRange(rtxtRecipeDescription.Document.ContentStart, rtxtRecipeDescription.Document.ContentEnd).Text;
-            IO.Database.AddRecipeToDatabase(recipe);
+            if (!IsReadOnlyMode)
+            {
+                recipe.PeopleNumber = int.Parse(txtPeopleNumber.Text);
+                recipe.title = txtRecipeTitle.Text;
+                recipe.Description = new TextRange(rtxtRecipeDescription.Document.ContentStart, rtxtRecipeDescription.Document.ContentEnd).Text;
+                IO.Database.AddRecipeToDatabase(recipe, IsEditMode);
+            }
             HomePanel();
         }
 
