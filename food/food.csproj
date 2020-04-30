@@ -87,6 +87,9 @@
     <Compile Include="Tag.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="Unit.cs" />
+    <Compile Include="RecipeList.xaml.cs">
+      <DependentUpon>RecipeList.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddRecipePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +115,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="RecipePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RecipeList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

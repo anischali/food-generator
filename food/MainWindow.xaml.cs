@@ -41,5 +41,12 @@ namespace food
             PanelOfUserControl.Children.Clear();
             PanelOfUserControl.Children.Add(recipePage);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RecipeList recipeList = new RecipeList();
+            PanelOfUserControl.Children.Clear();
+            PanelOfUserControl.Children.Add(recipeList);
+        }
     }
 }
