@@ -25,6 +25,7 @@ namespace food
         private bool isPanelViewVisible = false;
         private bool IsEditMode = false;
         private bool IsReadOnlyMode = false;
+        
         internal AddRecipePage(Recipe RecipeToEdit = null, bool IsReadOnly = false)
         {
             InitializeComponent();
@@ -35,18 +36,23 @@ namespace food
                 return;
             }
             recipe = RecipeToEdit;
-            LoadRecipe();
             IsEditMode = true;
             IsReadOnlyMode = IsReadOnly;
+            LoadRecipe();
         }
 
         private void LoadRecipe()
         {
             UpdateListView();
-            PopulateTagsList(true);
             txtRecipeTitle.Text = recipe.title;
             txtPeopleNumber.Text = recipe.PeopleNumber.ToString();
             rtxtRecipeDescription.AppendText(recipe.Description);
+            if (IsReadOnlyMode)
+            {
+                ReadOnlyModePopulateTagsList();
+                return;
+            }
+            PopulateTagsList(true);
         }
 
         private void AddToListRecipe(RecipeContent content)
@@ -68,8 +74,6 @@ namespace food
 
         private void UpdateListView()
         {
-            if (IsReadOnlyMode)
-                return;
             lstContententList.Items.Clear();
             foreach (RecipeContent rc in recipe.Contents)
             {
@@ -153,6 +157,8 @@ namespace food
                 return;
             CheckBox senderBox = (CheckBox)sender;
             recipe.Tags.Add((Tag)senderBox.Tag);
+            lblActiveTagsNumber.Content = recipe.Tags.Count.ToString();
+
         }
 
         internal void OnTagUncheckedEvent(object sender, RoutedEventArgs args)
@@ -161,6 +167,8 @@ namespace food
                 return;
             CheckBox senderBox = (CheckBox)sender;
             recipe.Tags.Remove((Tag)senderBox.Tag);
+            lblActiveTagsNumber.Content = recipe.Tags.Count.ToString();
+
         }
 
 
@@ -192,6 +200,26 @@ namespace food
                 lst.Add(CreateCheckBox(i));
             }
             cmbRecipeTags.ItemsSource = lst;
+            lblActiveTagsNumber.Content = recipe.Tags.Count.ToString();
+        }
+
+
+
+        internal void ReadOnlyModePopulateTagsList()
+        {
+            List<string> lst = new List<string>();
+
+            for (int i = 0; i < Generator.tags.Length; ++i)
+            {
+                if (recipe.Tags.Contains((Tag)i))
+                {
+                    lst.Add(Generator.tags[i]);
+                    continue;
+                }
+            }
+            cmbRecipeTags.ItemsSource = lst;
+            cmbRecipeTags.IsReadOnly = IsReadOnlyMode;
+            lblActiveTagsNumber.Content = recipe.Tags.Count.ToString();
         }
 
 
@@ -204,7 +232,7 @@ namespace food
         {
             if (!IsReadOnlyMode)
             {
-                recipe.PeopleNumber = int.Parse(txtPeopleNumber.Text);
+                recipe.PeopleNumber = (recipe.PeopleNumber < 1) ? 1 : recipe.PeopleNumber;
                 recipe.title = txtRecipeTitle.Text;
                 recipe.Description = new TextRange(rtxtRecipeDescription.Document.ContentStart, rtxtRecipeDescription.Document.ContentEnd).Text;
                 IO.Database.AddRecipeToDatabase(recipe, IsEditMode);
@@ -212,6 +240,18 @@ namespace food
             HomePanel();
         }
 
+        private void txtPeopleNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!IsReadOnlyMode)
+            {
+                recipe.PeopleNumber = (int)Tools.ParseDouble(txtPeopleNumber.Text);
+                txtPeopleNumber.Text = (recipe.PeopleNumber < 1) ? "" : recipe.PeopleNumber.ToString();
+            }
+            else 
+            {
+                txtPeopleNumber.Text = recipe.PeopleNumber.ToString();
+            }
+        }
     }
 
 

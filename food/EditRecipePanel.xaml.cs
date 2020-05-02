@@ -31,7 +31,7 @@ namespace food
         private void btnValidate_Click(object sender, RoutedEventArgs e)
         {
             Unit unit = (cmbQuantityUnit.SelectedIndex > -1) ? (Unit)cmbQuantityUnit.SelectedIndex : Unit.Unknown;
-            editRecipeContent(uid, Double.Parse(txtContentQuantity.Text), unit);
+            editRecipeContent(uid, Tools.ParseDouble(txtContentQuantity.Text), unit);
             closeEvent();
         }
 

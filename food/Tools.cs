@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
 namespace food
@@ -12,6 +13,23 @@ namespace food
             Regex rx = new Regex("[\\/:\"*?<>|]+");
             return rx.Replace(old, "");
         }
+
+        internal static double ParseDouble(string number)
+        {
+            Regex rx = new Regex("^[-+]?[0-9]*\\.?\\,?[0-9]+([eE][-+]?[0-9]+)?\\z");
+            if (rx.IsMatch(number))
+            {
+                Regex rx2 = new Regex("\\.");
+                if (rx2.IsMatch(number))
+                {
+                    number = rx2.Replace(number, ",");
+                    return double.Parse(number);
+                }
+                return double.Parse(number);
+            }
+            return double.NaN;
+        }
+
 
         internal static Type LoadFromJSON<Type>(string file_Name)
         {

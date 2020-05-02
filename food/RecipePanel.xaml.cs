@@ -60,7 +60,7 @@ namespace food
             Content content = IO.Database.contents[idx];
             RecipeContent rcontent = new RecipeContent();
             rcontent.uid = content.uid;
-            rcontent.Quantity = Double.Parse(this.txtContentQuantity.Text);
+            rcontent.Quantity = Tools.ParseDouble(this.txtContentQuantity.Text);
             rcontent.QuantityUnit = (Unit)this.cmbQuantityUnit.SelectedIndex;
             addToListOfContentsEvent(rcontent);
             closeEvent();
