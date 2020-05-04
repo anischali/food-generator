@@ -101,4 +101,14 @@ namespace food
             return null;
         }
     }
+
+    class ContentComparer : IComparer<Content>
+    {
+        public int Compare(Content x, Content y)
+        {
+            if (x.Name == null || y.Name == null)
+                return 0;
+            return x.Name.CompareTo(y.Name);
+        }
+    }
 }

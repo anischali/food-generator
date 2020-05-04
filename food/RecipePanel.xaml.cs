@@ -41,7 +41,7 @@ namespace food
             Content content = new Content();
             int idx = cmbContentType.SelectedIndex;
             content.Name = this.txtContentName.Text;
-            content.type = (Tag)((idx != -1) ? idx + 4 : idx);
+            content.type = (ContentTag)(idx);
             addNewContentToDatabaseEvent(content);
             PopulateContentComboBox();
             HideAddNewContentPanel();
@@ -74,8 +74,7 @@ namespace food
 
         private void PopulateAllComboBoxs()
         {
-            List<string> contentsType = new List<string>(Generator.tags);
-            contentsType.RemoveRange(0, 4);
+            List<string> contentsType = new List<string>(Generator.contentTags);
             cmbContentType.ItemsSource = contentsType;
             PopulateContentComboBox();
             cmbQuantityUnit.ItemsSource = Generator.units;

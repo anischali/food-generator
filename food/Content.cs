@@ -11,11 +11,11 @@ namespace food
         [DataMember]
         internal string Name { get; set; }
         [DataMember]
-        internal Tag type { get; set; }
+        internal ContentTag type { get; set; }
 
 
 
-        internal Content(String name, Tag tag, double quantity, Unit unit)
+        internal Content(String name, ContentTag tag, double quantity, Unit unit)
         {
             uid = Guid.NewGuid().ToString();
             Name = name;
@@ -26,7 +26,7 @@ namespace food
         {
             uid = Guid.NewGuid().ToString();
             Name = "Undefined";
-            type = Tag.Undefined;
+            type = ContentTag.Undefined;
         }
     }
 }

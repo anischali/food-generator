@@ -16,6 +16,28 @@
         Vegetables = 10,
         Rice_Pasta = 11,
         Pulses = 12,
-        Other = 13
+        RamadanSoir = 13,
+        RamadanMatin = 14,
+        Soupe = 15,
+        Boisson = 16,
+        Other = 17
+    }
+
+    internal enum ContentTag
+    {
+        Undefined = -1,
+        Protein = 0,
+        Vegetables = 1,
+        Pulses = 2,
+        Laitier = 3,
+        Feculents = 4,
+        Menager = 5,
+        Boisson = 6,
+        Dessert = 7,
+        FruitFrais = 8,
+        FruitSecs = 9,
+        FruitOleagineux = 10,
+        Epices = 11,
+        Other = 12
     }
 }

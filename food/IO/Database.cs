@@ -46,11 +46,28 @@ namespace food.IO
             Tools.SaveToJSON<List<Content>>(contents, path, contents_fileName);
         }
 
+        static private void test()
+        {
+            foreach (Content c in contents)
+            {
+                if (c.uid == "0")
+                    c.uid = Guid.NewGuid().ToString();
+            }
+
+            
+        }
+
         internal static void LoadAllDatabases()
         {
             contents = Tools.LoadFromJSON<List<Content>>(Path.Combine(path, contents_fileName));
             if (contents == null)
                 contents = new List<Content>();
+            if (contents.Count > 2)
+            {
+                test();
+                ContentComparer cc = new ContentComparer();
+                contents.Sort(cc);
+            }
             AllMenus = Tools.LoadFromJSON<List<Recipe>>(Path.Combine(path, recipe_fileName));
             if (AllMenus == null)
                 AllMenus = new List<Recipe>();
