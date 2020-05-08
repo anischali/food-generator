@@ -87,7 +87,23 @@ namespace food
         {
             int idx = cmbContent.SelectedIndex;
             if (idx < 0)
+            {
+                cmbContent.Focusable = true;
+                cmbContent.Focus();
                 return;
+            }
+            if (this.txtContentQuantity.Text == "")
+            {
+                txtContentQuantity.Focusable = true;
+                txtContentQuantity.Focus();
+                return;
+            }
+            if (this.cmbQuantityUnit.SelectedIndex == -1)
+            {
+                cmbQuantityUnit.Focusable = true;
+                cmbQuantityUnit.Focus();
+                return;
+            }
             Content content = IO.Database.contents[idx];
             RecipeContent rcontent = new RecipeContent();
             rcontent.uid = content.uid;
