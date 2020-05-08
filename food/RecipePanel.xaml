@@ -18,17 +18,17 @@
             </ComboBox>
             <Label Content="Quantité" HorizontalAlignment="Left" VerticalAlignment="Top" Height="29" Width="182" Margin="0,22,0,0"/>
             <TextBox x:Name="txtContentQuantity" Height="20" Margin="0,30,139.6,48" TextWrapping="Wrap" HorizontalAlignment="Right" Width="123"/>
-            <Button x:Name="btnValidate" Content="✔" HorizontalAlignment="Left" Margin="53,0,0,4" VerticalAlignment="Bottom" Width="32" Height="32" Click="btnValidate_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+            <Button x:Name="btnValidate" Content="✔" HorizontalAlignment="Left" Margin="318,0,0,4" VerticalAlignment="Bottom" Width="32" Height="32" Click="btnValidate_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
             <Button x:Name="btnNewContent" Content="✨" HorizontalAlignment="Right" Margin="350,0,0,0" VerticalAlignment="Top" Width="35" Height="22" Click="btnNewContent_Click" Foreground="#FFF3F3F3" Background="#FF0B1797" BorderBrush="#FFBBD624"/>
-            <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Right" Margin="0,65,57.6,0" VerticalAlignment="Top" Width="32" Height="32" Click="btnCancel_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+            <Button x:Name="btnCancel" Content="❌" HorizontalAlignment="Right" Margin="0,65,306.6,0" VerticalAlignment="Top" Width="32" Height="32" Click="btnCancel_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
             <ComboBox x:Name="cmbQuantityUnit" HorizontalAlignment="Left" Margin="246,31,-0.4,0" VerticalAlignment="Top" Width="140" Height="20"/>
 
         </Grid>
         <Grid x:Name="grdNewContent" HorizontalAlignment="Center" VerticalAlignment="Center" Width="386" Canvas.Top="10" Canvas.Left="-216" Background="White" Visibility="Hidden">
             <TextBox x:Name="txtContentName" HorizontalAlignment="Right" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
             <ComboBox x:Name="cmbContentType" HorizontalAlignment="Right" Margin="0,28,0,0" VerticalAlignment="Top" Width="260"/>
-            <Button x:Name="btnContentSubmit" Content="✔" HorizontalAlignment="Left" Margin="54,0,0,10" VerticalAlignment="Bottom" Width="32" Height="32" Click="btnContentSubmit_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
-            <Button x:Name="btnContentCancel" Content="❌" HorizontalAlignment="Right" Margin="0,58,53,0" VerticalAlignment="Top" Width="32" Height="32" Click="btnContentCancel_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+            <Button x:Name="btnContentSubmit" Content="✔" HorizontalAlignment="Left" Margin="304,0,0,10" VerticalAlignment="Bottom" Width="32" Height="32" Click="btnContentSubmit_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+            <Button x:Name="btnContentCancel" Content="❌" HorizontalAlignment="Right" Margin="0,58,313,0" VerticalAlignment="Top" Width="32" Height="32" Click="btnContentCancel_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
             <Label Content="Nom de l'ingredient" HorizontalAlignment="Left" VerticalAlignment="Top" Height="29" Width="182"/>
             <Label Content="Type" HorizontalAlignment="Left" Margin="0,23,0,0" VerticalAlignment="Top" Height="29" Width="182"/>
             <local:GeneratorPage HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="0"/>
