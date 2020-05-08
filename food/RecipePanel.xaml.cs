@@ -31,11 +31,27 @@ namespace food
             cmbContent.Focus();
         }
 
+        private void RemoveContent()
+        {
+            int idx = cmbContent.SelectedIndex;
+            if (idx < 0)
+                return;
+            IO.Database.RemoveContentAtIndexFromDatabase(idx);
+        }
+
         private void OnEnterKeyPressed(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
+            switch(e.Key)
             {
-                btnValidate_Click(sender, e);
+                case Key.Enter:
+                    btnValidate_Click(sender, e);
+                    break;
+                case Key.Delete:
+                    RemoveContent();
+                    PopulateContentComboBox();
+                    break;
+                default:
+                    break;
             }
         }
         private void HideAddNewContentPanel()

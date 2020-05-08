@@ -15,6 +15,12 @@ namespace food.IO
         internal static List<HistoryRecipe> HistoryMenus;
 
 
+        internal static void RemoveContentAtIndexFromDatabase(int idx)
+        {
+            contents.RemoveAt(idx);
+            ContentComparer cc = new ContentComparer();
+            contents.Sort(cc);
+        }
 
         internal static void AddContentToDatabase(Content content)
         {

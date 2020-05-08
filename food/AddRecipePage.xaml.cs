@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Input;
 
 namespace food
 {
@@ -39,7 +41,9 @@ namespace food
             IsEditMode = true;
             IsReadOnlyMode = IsReadOnly;
             LoadRecipe();
+             
         }
+
 
         private void LoadRecipe()
         {
