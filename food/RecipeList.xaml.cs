@@ -26,6 +26,7 @@ namespace food
         {
             InitializeComponent();
             RecipeListPopulate();
+            vwlRecipeList.MouseDoubleClick += vwlRecipeList_DoubleClick;
         }
 
         private void RecipeListPopulate()
@@ -55,6 +56,12 @@ namespace food
             
             GrdListView.Children.Add(EditRecipePage);
 
+        }
+
+        
+        private void vwlRecipeList_DoubleClick(object sender, RoutedEventArgs e)
+        {
+            BtnViewRecipe_Click(sender, e);
         }
 
         private void BtnViewRecipe_Click(object sender, RoutedEventArgs e)
