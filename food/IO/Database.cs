@@ -20,6 +20,8 @@ namespace food.IO
         {
             contents.Add(content);
             Tools.SaveToJSON<List<Content>>(contents, path, contents_fileName);
+            ContentComparer cc = new ContentComparer();
+            contents.Sort(cc);
         }
 
         internal static void AddRecipeToDatabase(Recipe recipe, bool IsUpdate = false)
