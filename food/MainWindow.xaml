@@ -13,7 +13,7 @@
         <Button Content="Afficher toutes les recettes" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" Click="Button_Click"/>
         <Button Content="Paramètres" HorizontalAlignment="Left" Margin="0,175,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
         <Button Content="Exporter les recettes" HorizontalAlignment="Left" Margin="0,105,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
-        <Button Content="Importer des recette" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+        <Button Content="Importer des recettes" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
         <Grid x:Name="PanelOfUserControl" Margin="167,0,-0.4,-0.4" />
 
     </Grid>
