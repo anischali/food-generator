@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media.TextFormatting;
 
 namespace food
 {
@@ -19,10 +21,23 @@ namespace food
         {
             InitializeComponent();
             PopulateAllComboBoxs();
+            this.Loaded += OnLoad;
+            this.KeyDown += OnEnterKeyPressed;
         }
 
+        private void OnLoad(object sender, RoutedEventArgs e)
+        {
+            cmbContent.Focusable = true;
+            cmbContent.Focus();
+        }
 
-
+        private void OnEnterKeyPressed(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                btnValidate_Click(sender, e);
+            }
+        }
         private void HideAddNewContentPanel()
         {
             this.grdNewContent.Visibility = Visibility.Hidden;
