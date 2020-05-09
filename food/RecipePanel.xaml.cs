@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.TextFormatting;
+using MessageBox = System.Windows.MessageBox;
 
 namespace food
 {
@@ -31,12 +31,18 @@ namespace food
             cmbContent.Focus();
         }
 
-        private void RemoveContent()
+
+        private bool DeleteConfirmation(int idx)
         {
-            int idx = cmbContent.SelectedIndex;
             if (idx < 0)
-                return;
-            IO.Database.RemoveContentAtIndexFromDatabase(idx);
+                return false;
+            string messageBoxText = $"Vous etes sur de vouloir supprimmer {IO.Database.contents[idx].Name}";
+            MessageBoxButton button = MessageBoxButton.YesNoCancel;
+            MessageBoxImage icon = MessageBoxImage.Warning;
+            MessageBoxResult confirmMsg = MessageBox.Show(messageBoxText, null, button, icon);
+            if (confirmMsg == MessageBoxResult.Yes)
+                return true;
+            return false;
         }
 
         private void OnEnterKeyPressed(object sender, KeyEventArgs e)
@@ -47,8 +53,12 @@ namespace food
                     btnValidate_Click(sender, e);
                     break;
                 case Key.Delete:
-                    RemoveContent();
-                    PopulateContentComboBox();
+                    int idx = cmbContent.SelectedIndex;
+                    if (DeleteConfirmation(idx))
+                    {
+                        IO.Database.RemoveContentAtIndexFromDatabase(idx);
+                        PopulateContentComboBox();
+                    }
                     break;
                 default:
                     break;
