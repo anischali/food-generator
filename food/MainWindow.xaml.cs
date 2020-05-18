@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace food
 {
@@ -47,6 +48,13 @@ namespace food
             RecipeList recipeList = new RecipeList();
             PanelOfUserControl.Children.Clear();
             PanelOfUserControl.Children.Add(recipeList);
+        }
+
+        private void btnAdvancedSearch_Click(object sender, RoutedEventArgs e)
+        {
+            AdvancedSearchPanel advs = new AdvancedSearchPanel();
+            PanelOfUserControl.Children.Clear();
+            PanelOfUserControl.Children.Add(advs);
         }
     }
 }

@@ -11,10 +11,11 @@
         <Button Content="Generer des repas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="167" Height="35" Click="Button_Click_1" ClickMode="Press" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
         <Button Content="Ajouter une recette" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Click="Button_Click_2" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
         <Button Content="Afficher toutes les recettes" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" Click="Button_Click"/>
-        <Button Content="Paramètres" HorizontalAlignment="Left" Margin="0,175,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+        <Button x:Name="btnAdvancedSearch" Content="Recherche avancée" HorizontalAlignment="Left" Margin="0,175,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" Click="btnAdvancedSearch_Click"/>
         <Button Content="Exporter les recettes" HorizontalAlignment="Left" Margin="0,105,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
         <Button Content="Importer des recettes" HorizontalAlignment="Left" Margin="0,140,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
         <Grid x:Name="PanelOfUserControl" Margin="167,0,-0.4,-0.4" />
+        <Button Content="Paramètres" HorizontalAlignment="Left" Margin="0,210,0,0" VerticalAlignment="Top" Width="167" Height="35" RenderTransformOrigin="0.389,0.573" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
 
     </Grid>
 </Window>

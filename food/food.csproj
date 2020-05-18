@@ -68,6 +68,9 @@
     <Compile Include="AddRecipePage.xaml.cs">
       <DependentUpon>AddRecipePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AdvancedSearchPanel.xaml.cs">
+      <DependentUpon>AdvancedSearchPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Content.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="EditRecipePanel.xaml.cs">
@@ -91,6 +94,10 @@
       <DependentUpon>RecipeList.xaml</DependentUpon>
     </Compile>
     <Page Include="AddRecipePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdvancedSearchPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

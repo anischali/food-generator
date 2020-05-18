@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text.RegularExpressions;
@@ -100,6 +101,47 @@ namespace food
             }
             return null;
         }
+
+
+        internal static bool IsRecipeContainsContents(Recipe recipe, List<int> contents)
+        {
+            foreach (int idx in contents)
+            {
+                foreach (RecipeContent c in recipe.Contents)
+                {
+                    if (c.uid == IO.Database.contents[idx].uid)
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        internal static bool IsRecipeContainsAnyTags(Recipe recipe, List<Tag> tags)
+        {
+            foreach (Tag st in tags)
+            {
+                foreach (Tag t in recipe.Tags)
+                {
+                    if (t == st)
+                        return true;
+                }
+            }
+            return false;
+        }
+
+        internal static bool IsRecipeContainsAllTags(Recipe recipe, List<Tag> tags)
+        {
+            int count = 0;
+            foreach (Tag st in tags)
+            {
+                foreach (Tag t in recipe.Tags)
+                {
+                    if (t == st)
+                        count++;
+                }
+            }
+            return (count == tags.Count);
+        }
     }
 
     class ContentComparer : IComparer<Content>
@@ -110,5 +152,7 @@ namespace food
                 return 0;
             return x.Name.CompareTo(y.Name);
         }
+
+        
     }
 }
