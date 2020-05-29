@@ -4,15 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:food"
-             mc:Ignorable="d" d:DesignWidth="558.8" Width="Auto">
-    <StackPanel Background="White" Height="619" Margin="0,0,0.4,0">
+             mc:Ignorable="d" d:DesignWidth="558.8" Width="Auto" ScrollViewer.CanContentScroll="True">
+    <StackPanel Background="White" Height="619" Margin="0,0,0.4,0" CanVerticallyScroll="True">
         <WrapPanel Margin="24,30,465.4,0" Orientation="Horizontal" Height="32" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Grid x:Name="GrdListView" Height="404" Margin="10,0,10.4,0">
             <StackPanel Orientation="Vertical">
                 <Grid Margin="0,0,-0.4,0" Height="40">
                     <Button x:Name="BtnEditRecipe" Content="📝" Width="32" HorizontalAlignment="Left" Margin="10,5,0,3" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" Click="BtnEditRecipe_Click"/>
                     <Button x:Name="BtnRemoveRecipe" Content="🗑" Width="32" RenderTransformOrigin="-0.144,0.569" HorizontalAlignment="Left" Margin="47,5,0,3" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" Click="BtnRemoveRecipe_Click"/>
-                    <TextBox Height="22" HorizontalAlignment="Right" VerticalAlignment="Center" MinWidth="100" Width="184" Cursor="" VerticalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="True" MaxLines="1" MaxLength="256" Margin="0,15,10,3"/>
+                    <TextBox x:Name="txtSearchByTitle" Height="22" HorizontalAlignment="Right" VerticalAlignment="Center" MinWidth="100" Width="184" Cursor="" VerticalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="True" MaxLines="1" MaxLength="256" Margin="0,15,10,3" TextChanged="txtSearchByTitle_TextChanged"/>
                     <Button Content="🔎" Width="24" RenderTransformOrigin="0,0" Height="22" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" Focusable="False" FocusVisualStyle="{x:Null}" IsEnabled="False" HorizontalAlignment="Right" Margin="0,15,10,0">
                         <Button.RenderTransform>
                             <TransformGroup>

@@ -102,6 +102,20 @@ namespace food
             return null;
         }
 
+        internal static List<string> FindAllMatchTitleRecipes(string title)
+        {
+            List<string> res = new List<string>();
+            foreach (Recipe r in IO.Database.AllMenus)
+            {
+                string lowerTitle = r.title.ToLower();
+                if (lowerTitle.Contains(title))
+                {
+                    res.Add(r.title);
+                }
+            }
+            return res;
+        }
+
 
         internal static bool IsRecipeContainsContents(Recipe recipe, List<int> contents)
         {

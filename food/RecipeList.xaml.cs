@@ -86,5 +86,19 @@ namespace food
             RecipeListPopulate();
 
         }
+        private void txtSearchByTitle_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.txtSearchByTitle.Text == "")
+            {
+                vwlRecipeList.Items.Clear();
+                RecipeListPopulate();
+                return;
+            }
+            List<string> res = Tools.FindAllMatchTitleRecipes(this.txtSearchByTitle.Text.ToLower());
+            vwlRecipeList.Items.Clear();
+
+            foreach (string title in res)
+                vwlRecipeList.Items.Add(title);
+        }
     }
 }
