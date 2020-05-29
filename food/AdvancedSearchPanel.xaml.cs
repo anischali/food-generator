@@ -9,6 +9,7 @@ namespace food
     /// </summary>
     public partial class AdvancedSearchPanel : UserControl
     {
+        private AddRecipePage EditRecipePage;
         private readonly List<int> RecipeIndexs = new List<int>();
         private readonly List<int> ContentsInRecipe = new List<int>();
         private readonly List<Tag> TagsInRecipe = new List<Tag>();
@@ -177,5 +178,41 @@ namespace food
             PopulateListWithSearchResults();
         }
 
+        private void GoBackHere()
+        {
+            GridListView.Children.Remove(EditRecipePage);
+        }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Recipe SelectedRecipe = Tools.FindRecipeByTitle((string)lstSearchResults.SelectedItem);
+            if (SelectedRecipe == null)
+                return;
+            EditRecipePage = new AddRecipePage(SelectedRecipe);
+            EditRecipePage.HomePanel += GoBackHere;
+
+            GridListView.Children.Add(EditRecipePage);
+        }
+
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            Recipe SelectedRecipe = Tools.FindRecipeByTitle((string)lstSearchResults.SelectedItem);
+            if (SelectedRecipe == null)
+                return;
+            IO.Database.AllMenus.Remove(SelectedRecipe);
+            IO.Database.SaveAllDatabases();
+            btnSearch_Click(sender, e);
+        }
+
+        private void btnView_Click(object sender, RoutedEventArgs e)
+        {
+            Recipe SelectedRecipe = Tools.FindRecipeByTitle((string)lstSearchResults.SelectedItem);
+            if (SelectedRecipe == null)
+                return;
+            EditRecipePage = new AddRecipePage(SelectedRecipe, true);
+            EditRecipePage.HomePanel += GoBackHere;
+
+            GridListView.Children.Add(EditRecipePage);
+        }
     }
 }

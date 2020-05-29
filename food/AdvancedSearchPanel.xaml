@@ -5,22 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:food"
              mc:Ignorable="d" Height="644.444" Width="548">
-    <Grid Background="White">
+    <Grid x:Name="GridListView" Background="White" Margin="-33,0,-63,-0.2">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="71*"/>
-            <ColumnDefinition Width="203*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="tbTitle" HorizontalAlignment="Left" Height="23" Margin="59,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="321" Grid.Column="1"/>
-        <ComboBox x:Name="cmbContents" HorizontalAlignment="Left" Margin="58.4,70,0,0" VerticalAlignment="Top" Width="321" Grid.Column="1"/>
-        <ComboBox x:Name="cmbTags" HorizontalAlignment="Left" Margin="59,92,0,0" VerticalAlignment="Top" Width="321" Grid.Column="1"/>
-        <ListBox x:Name="lstSearchResults" HorizontalAlignment="Left" Height="361" Margin="28,192,0,0" VerticalAlignment="Top" Width="493" Grid.ColumnSpan="2"/>
-        <Button x:Name="btnSearch" Content="🔎" HorizontalAlignment="Left" Margin="347.4,139,0,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="1.569,0.194" Grid.Column="1" Click="btnSearch_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
-        <Button x:Name="btnEdit" Content="📝" HorizontalAlignment="Left" Margin="28,160,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.179,0.625" Height="32" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
-        <Button x:Name="btnRemove" Content="🗑" HorizontalAlignment="Left" Margin="65,160,0,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="0.569,0.05" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
-        <Button x:Name="btnView" Content="👁‍🗨" HorizontalAlignment="Left" Margin="102,160,0,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="0.15,0.65" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
-        <CheckBox x:Name="chbTitle" Content="Title" HorizontalAlignment="Left" Margin="19,48,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chbContents" Content="Ingrédients" HorizontalAlignment="Left" Margin="19,70,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="chbTags" Content="Tags" HorizontalAlignment="Left" Margin="19,92,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.039"/>
-        <CheckBox x:Name="chbOrAnd" Content="Ou" Grid.Column="1" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbTitle" HorizontalAlignment="Left" Height="23" Margin="300,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="321"/>
+        <ComboBox x:Name="cmbContents" HorizontalAlignment="Left" Margin="300,63,0,0" VerticalAlignment="Top" Width="321" Height="22"/>
+        <ComboBox x:Name="cmbTags" HorizontalAlignment="Left" Margin="300,85,0,0" VerticalAlignment="Top" Width="321" Height="22"/>
+        <ListBox x:Name="lstSearchResults" HorizontalAlignment="Left" Height="361" Margin="28,192,0,0" VerticalAlignment="Top" Width="593"/>
+        <Button x:Name="btnSearch" Content="🔎" HorizontalAlignment="Left" Margin="589,160,0,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="1.569,0.194" Click="btnSearch_Click" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3"/>
+        <Button x:Name="btnEdit" Content="📝" HorizontalAlignment="Left" Margin="28,160,0,0" VerticalAlignment="Top" Width="32" RenderTransformOrigin="0.179,0.625" Height="32" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" Click="btnEdit_Click"/>
+        <Button x:Name="btnRemove" Content="🗑" HorizontalAlignment="Left" Margin="65,160,0,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="0.569,0.05" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" Click="btnRemove_Click"/>
+        <Button x:Name="btnView" Content="👁‍🗨" HorizontalAlignment="Left" Margin="102,160,0,0" VerticalAlignment="Top" Width="32" Height="32" RenderTransformOrigin="0.15,0.65" Background="#FF0B1797" BorderBrush="#FFBBD624" Foreground="#FFF3F3F3" Click="btnView_Click"/>
+        <CheckBox x:Name="chbTitle" Content="Title" HorizontalAlignment="Left" Margin="11,48,0,0" VerticalAlignment="Top" Height="15" Width="99"/>
+        <CheckBox x:Name="chbContents" Content="Ingrédients" HorizontalAlignment="Left" Margin="11,70,0,0" VerticalAlignment="Top" Height="15" Width="99"/>
+        <CheckBox x:Name="chbTags" Content="Tags" HorizontalAlignment="Left" Margin="11,92,0,0" VerticalAlignment="Top" RenderTransformOrigin="0,0.039" Height="15" Width="99"/>
+        <CheckBox x:Name="chbOrAnd" Content="Ou" HorizontalAlignment="Left" Margin="246,95,0,0" VerticalAlignment="Top" Height="15" Width="35"/>
     </Grid>
 </UserControl>
