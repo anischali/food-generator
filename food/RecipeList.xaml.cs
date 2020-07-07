@@ -44,6 +44,7 @@ namespace food
             vwlRecipeList.Items.Clear();
             RecipeListPopulate();
             GrdListView.Children.Remove(EditRecipePage);
+            txtSearchByTitle_TextChanged(null, null);
         }
 
         private void BtnEditRecipe_Click(object sender, RoutedEventArgs e)
